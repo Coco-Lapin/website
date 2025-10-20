@@ -1,0 +1,19 @@
+.skill-badge:hover{
+    transform: scale(1.10);
+    background-color: #d4d9dc;
+    transition: all 0.1s ease-in-out;
+    cursor: pointer;
+}
+.image-project:hover{
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+.contact-icon:hover{
+    transform: scale(1.1);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+.valid-name, .valid-Mail, .valid-Message {
+    animation: fadeIn 0.5s ease-in-out;
+}
