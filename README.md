@@ -9,9 +9,10 @@ Ce dépôt contient plusieurs projets étudiants de développement web, dont des
 - HTML5
 - CSS3 (Flex, Grid, Animations...)
 - JavaScript ES6+
+- Tailwind
 
 ## 🚩 Projets présents
-- *(rajoute chaque dossier/fichier important ici)*
+- Vous pouvez aller voir à l'url suivante : https:\\www.devNco.be
 
 ## 📦 Installation/Utilisation
 1. Clone le dépôt :
