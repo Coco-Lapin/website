@@ -23,11 +23,68 @@ function validateAndSend() {
     return;
   }
 
-  // Si tout est valide, afficher la popup
-  popupSend();
-  // Réinitialiser le formulaire
-  form.reset();
-  document.getElementById("charCount").textContent = "0";
+  // Si tout est valide, envoyer les données au serveur
+  sendEmailToServer(name, email, message);
+}
+
+async function sendEmailToServer(name, email, message) {
+  const submitButton = document.querySelector(
+    'button[onclick="validateAndSend()"]'
+  );
+  const originalText = submitButton.innerHTML;
+
+  // Désactiver le bouton et afficher un loader
+  submitButton.disabled = true;
+  submitButton.innerHTML = '<span class="truncate">Envoi en cours...</span>';
+
+  try {
+    // Préparer les données du formulaire
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("email", email);
+    formData.append("message", message);
+
+    // Envoyer la requête au serveur PHP
+    const response = await fetch("send-email.php", {
+      method: "POST",
+      body: formData,
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      // Succès : afficher la popup de confirmation
+      popupSend();
+      // Réinitialiser le formulaire
+      document.getElementById("contactForm").reset();
+      document.getElementById("charCount").textContent = "0";
+    } else {
+      // Erreur : afficher un message d'erreur
+      showError(result.message || "Erreur lors de l'envoi du message");
+    }
+  } catch (error) {
+    console.error("Erreur:", error);
+    showError("Erreur de connexion au serveur. Veuillez réessayer.");
+  } finally {
+    // Réactiver le bouton
+    submitButton.disabled = false;
+    submitButton.innerHTML = originalText;
+  }
+}
+
+function showError(message) {
+  // Créer et afficher un message d'erreur temporaire
+  const errorDiv = document.createElement("div");
+  errorDiv.className =
+    "max-w-[448px] flex flex-col bg-[#db2019]/25 rounded-lg border-2 border-[#db2019] justify-center overflow-hidden p-4 m-4";
+  errorDiv.innerHTML = `<p class="text-[#db2019] text-sm font-normal leading-normal">${message}</p>`;
+
+  const formContainer = document.querySelector(".layout-content-container");
+  formContainer.insertBefore(errorDiv, formContainer.firstChild);
+
+  setTimeout(() => {
+    errorDiv.remove();
+  }, 5000);
 }
 
 function validateEmail(email) {

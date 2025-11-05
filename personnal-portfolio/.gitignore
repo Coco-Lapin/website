@@ -1,0 +1,25 @@
+# Documentation de configuration email (contient des infos sensibles)
+README-EMAIL-SETUP.md
+
+# Fichiers de configuration locaux
+*.local
+
+# Logs
+*.log
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editeurs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environnement
+.env
+.env.local
+.env.*.local
