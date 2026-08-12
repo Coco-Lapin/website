@@ -42,12 +42,15 @@ const PROJECTS = [
   {
     type: "manual", titleKey: "proj.title.pid", title: "PID Controller",
     descKey: "projd.pid", statusKey: "projp.soon",
-    badges: ["Automatique", "PID"], accent: "#534AB7"
+    badges: ["Python", "PySide6", "pyqtgraph"], accent: "#534AB7",
+    /* depot prive : l'API GitHub ne peut pas lire le README, image servie en local */
+    fallbackImages: ["assets/img/pid-controller.png"]
   },
   {
-    type: "manual", titleKey: "proj.title.volant", title: "Sim Racing Wheel",
-    descKey: "projd.volant", statusKey: "projp.soon",
-    badges: ["Arduino", "C++", "3D Print"], accent: "#993556"
+    type: "repo", repo: "sim-racing-wheel", branch: "main",
+    titleKey: "proj.title.volant", title: "Sim Racing Wheel",
+    descKey: "projd.volant",
+    badges: ["Arduino", "C++", "3D Print"], accent: "#993556", fallbackImages: []
   },
   {
     type: "repo", repo: "ad-generator", branch: "main",
